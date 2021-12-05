@@ -1,6 +1,5 @@
 package com.bielfernandezb.samplebeerapp.presentation.navigation
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -36,9 +35,9 @@ class Navigator {
             .addToBackStack(fragment::class.java.toString()).commit()
     }
 
-    fun navigateToMainActivity(currentActivity: AppCompatActivity, context: Context) {
-        val intent = Intent(context, MainActivity::class.java)
-        context.startActivity(intent)
+    fun navigateToMainActivity(currentActivity: AppCompatActivity) {
+        val intent = Intent(currentActivity, MainActivity::class.java)
+        currentActivity.startActivity(intent)
         currentActivity.finish()
     }
 }

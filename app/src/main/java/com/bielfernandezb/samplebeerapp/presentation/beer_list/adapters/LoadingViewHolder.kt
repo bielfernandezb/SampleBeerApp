@@ -12,7 +12,7 @@ class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
 
     private val itemBinding = ItemLoadingBinding.bind(itemView)
 
-    override fun bind(unit: Beer) {
+    override fun bind(data: Beer) {
         val progressBar: ProgressBar = itemBinding.progressBar
     }
 
@@ -20,4 +20,5 @@ class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         //ProgressBar would be displayed
         functionLoading()
     }
+
 }

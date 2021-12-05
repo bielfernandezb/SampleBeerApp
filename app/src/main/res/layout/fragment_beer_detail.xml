@@ -1,105 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageBeerDetails"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/beer_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textBeerIpa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textBeerYear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageBeerDetails"
+            app:layout_constraintTop_toTopOf="@+id/imageBeerDetails" />
 
-            <ImageView
-                android:id="@+id/imageBeerDetails"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/beer_description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textBeerYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textBeerAbv"
+            app:layout_constraintStart_toStartOf="@+id/textBeerIpa" />
 
-            <TextView
-                android:id="@+id/textBeerIpa"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textBeerYear"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageBeerDetails"
-                app:layout_constraintTop_toTopOf="@+id/imageBeerDetails" />
+        <TextView
+            android:id="@+id/textBeerAbv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageBeerDetails"
+            app:layout_constraintStart_toStartOf="@+id/textBeerYear" />
 
-            <TextView
-                android:id="@+id/textBeerYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textBeerAbv"
-                app:layout_constraintStart_toStartOf="@+id/textBeerIpa" />
+        <TextView
+            android:id="@+id/textBeerHeaderDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/description"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@+id/imageBeerDetails"
+            app:layout_constraintTop_toBottomOf="@+id/imageBeerDetails" />
 
-            <TextView
-                android:id="@+id/textBeerAbv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageBeerDetails"
-                app:layout_constraintStart_toStartOf="@+id/textBeerYear" />
+        <TextView
+            android:id="@+id/textBeerDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textBeerHeaderDescription"
+            app:layout_constraintTop_toBottomOf="@+id/textBeerHeaderDescription" />
 
-            <TextView
-                android:id="@+id/textBeerHeaderDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="@string/description"
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="@+id/imageBeerDetails"
-                app:layout_constraintTop_toBottomOf="@+id/imageBeerDetails" />
+        <TextView
+            android:id="@+id/textBeerInformationHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/information"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@+id/textBeerDescription"
+            app:layout_constraintTop_toBottomOf="@+id/textBeerDescription" />
 
-            <TextView
-                android:id="@+id/textBeerDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textBeerHeaderDescription"
-                app:layout_constraintTop_toBottomOf="@+id/textBeerHeaderDescription" />
+        <TextView
+            android:id="@+id/textBeerInformation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textBeerInformationHeader"
+            app:layout_constraintTop_toBottomOf="@+id/textBeerInformationHeader" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/textBeerInformationHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/information"
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="@+id/textBeerDescription"
-                app:layout_constraintTop_toBottomOf="@+id/textBeerDescription" />
-
-            <TextView
-                android:id="@+id/textBeerInformation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textBeerInformationHeader"
-                app:layout_constraintTop_toBottomOf="@+id/textBeerInformationHeader" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </ScrollView>
-</layout>
+</ScrollView>

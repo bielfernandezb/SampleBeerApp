@@ -21,7 +21,7 @@ class BeersListViewModel @Inject constructor(
     private val _query = MutableLiveData<String>()
 
     private var _beers = _page.switchMap { page ->
-        beerListUseCase.invoke(Pair(page, 10))
+        beerListUseCase(Pair(page, 10))
     }
 
     val beers: LiveData<Resource<List<Beer>>> = _beers
@@ -41,7 +41,7 @@ class BeersListViewModel @Inject constructor(
     }
 
     private fun searchDatabase(searchQuery: String): LiveData<Resource<List<Beer>>> {
-        return searchBeerBaseUseCase.invoke(searchQuery)
+        return searchBeerBaseUseCase(searchQuery)
     }
 
 }

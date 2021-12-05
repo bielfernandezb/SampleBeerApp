@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Beers")
 data class Beer(
-    @PrimaryKey()
+    @PrimaryKey
     var id: Long,
     val name: String?,
     val tagline: String?,

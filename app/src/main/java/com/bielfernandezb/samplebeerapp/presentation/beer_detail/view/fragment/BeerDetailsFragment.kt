@@ -48,8 +48,10 @@ class BeerDetailsFragment : BaseFragment() {
                         binding.textBeerYear.text = beer.firstBrewed
                     }
                 }
+
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+
                 else -> {}
             }
         }

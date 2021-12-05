@@ -22,11 +22,11 @@ data class BeerDto(
     val ph: Double?,
     @SerializedName("attenuation_level")
     val attenuationLevel: Double?,
-    val volume: BoilVolume_,
+    val volume: BoilVolumeDto,
     @SerializedName("boil_volume")
-    val boilVolume: BoilVolume_?,
-    val method: Method_?,
-    val ingredients: Ingredients_?,
+    val boilVolume: BoilVolumeDto?,
+    val method: MethodDto?,
+    val ingredients: IngredientsDto?,
     @SerializedName("food_pairing")
     val foodPairings: List<String>?,
     @SerializedName("brewers_tips")
@@ -35,41 +35,41 @@ data class BeerDto(
     val contributedBy: String?
 )
 
-data class BoilVolume_(
+data class BoilVolumeDto(
     val value: Double?,
     val unit: String?
 )
 
-data class Ingredients_(
-    val malt: List<Malt_>?,
-    val hops: List<Hop_>?,
+data class IngredientsDto(
+    val malt: List<MaltDto>?,
+    val hops: List<HopDto>?,
     val yeast: String?
 )
 
-data class Hop_(
+data class HopDto(
     val name: String?,
-    val amount: BoilVolume_?,
+    val amount: BoilVolumeDto?,
     val add: String?,
     val attribute: String?
 )
 
-data class Malt_(
+data class MaltDto(
     val name: String?,
-    val amount: BoilVolume_?
+    val amount: BoilVolumeDto?
 )
 
-data class Method_(
+data class MethodDto(
     @SerializedName("mash_temp")
-    val mashTemp: List<MashTemp_>?,
-    val fermentation: Fermentation_?,
+    val mashTemp: List<MashTempDto>?,
+    val fermentation: FermentationDto?,
     val twist: String?
 )
 
-data class Fermentation_(
-    val temp: BoilVolume_?
+data class FermentationDto(
+    val temp: BoilVolumeDto?
 )
 
-data class MashTemp_(
-    val temp: BoilVolume_?,
+data class MashTempDto(
+    val temp: BoilVolumeDto?,
     val duration: Long?
 )

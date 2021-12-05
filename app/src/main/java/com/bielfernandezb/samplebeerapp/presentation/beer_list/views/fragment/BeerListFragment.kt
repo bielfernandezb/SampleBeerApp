@@ -89,19 +89,29 @@ class BeerListFragment : BaseFragment(), SearchView.OnQueryTextListener,
     }
 
     private fun setupObservers() {
+        observeBeers()
+        observeFilteredBeers()
+    }
+
+    private fun observeBeers() {
         viewModel.beers.distinctUntilChanged().observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     loadDone()
                     if (!it.data.isNullOrEmpty()) adapter.setItems(it.data)
                 }
+
                 Resource.Status.ERROR -> {
                     loadDone()
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                 }
+
                 else -> {}
             }
         }
+    }
+
+    private fun observeFilteredBeers() {
         viewModel.filterBeers.distinctUntilChanged().observe(viewLifecycleOwner) { list ->
             list.let {
                 adapter.setItems(it.data as List<Beer>)
@@ -147,27 +157,31 @@ class BeerListFragment : BaseFragment(), SearchView.OnQueryTextListener,
                 super.onScrolled(recyclerView, dx, dy)
                 val linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager?
                 if (!isLoading && !isSearching) {
-                    if (linearLayoutManager != null && linearLayoutManager.findLastCompletelyVisibleItemPosition() == adapter.itemCount - 1) {
+                    if (linearLayoutManager != null &&
+                        linearLayoutManager.findLastCompletelyVisibleItemPosition() == adapter.itemCount - 1
+                    ) {
                         //bottom of list!
                         loadMore()
                         isLoading = true
                     }
                 }
             }
+
         })
     }
 
     private fun loadMore() {
         adapter.addItemAsLoadingPlaceHolder()
-        binding.recyclerBeers.post { adapter.notifyDataSetChanged() }
+        binding.recyclerBeers.post { adapter.notifyItemInserted(adapter.itemCount - 1) }
         viewModel.start(calcCurrentPage() + 1)
     }
 
     private fun loadDone() {
         if (adapter.itemCount > 0) {
             adapter.removeItem(adapter.itemCount - 1)
-            adapter.notifyDataSetChanged()
+            adapter.notifyItemRemoved(adapter.itemCount - 1)
         }
         isLoading = false
     }
+
 }

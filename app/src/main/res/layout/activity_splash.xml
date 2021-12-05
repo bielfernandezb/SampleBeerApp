@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-        <variable
-            name="progress"
-            type="Integer" />
-    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <uk.co.barbuzz.beerprogressview.BeerProgressView
         android:id="@+id/beerProgressView"
@@ -15,9 +10,13 @@
         android:layout_height="match_parent"
         android:visibility="visible"
         app:beerColor="#EFA601"
-        app:beerProgress="@{progress}"
         app:bubbleColor="#B67200"
         app:bubbleCount="12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:waveAmplitude="3dp"
         app:waveMax="100" />
-</layout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

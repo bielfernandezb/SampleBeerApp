@@ -8,7 +8,7 @@ class BeerModelDataMapper {
 
     fun transform(beersResource: Resource<List<BeerDto>>?): Resource<List<Beer>> {
         val beers = mutableListOf<Beer>()
-        beersResource?.data?.forEach { it ->
+        beersResource?.data?.forEach {
             val beer = Beer(
                 it.id,
                 it.name,
@@ -38,11 +38,11 @@ class BeerModelDataMapper {
         return Resource(beersResource!!.status, beers, beersResource.message)
     }
 
-    private fun mapBoilVolume(boilVolume: BoilVolume_?): BoilVolume {
+    private fun mapBoilVolume(boilVolume: BoilVolumeDto?): BoilVolume {
         return BoilVolume(boilVolume?.value, boilVolume?.unit)
     }
 
-    private fun mapMethod(method: Method_?): Method {
+    private fun mapMethod(method: MethodDto?): Method {
         return Method(
             mapMashTemp(method?.mashTemp),
             mapFermentation(method?.fermentation),
@@ -50,7 +50,7 @@ class BeerModelDataMapper {
         )
     }
 
-    private fun mapIngredients(ingredients: Ingredients_?): Ingredients {
+    private fun mapIngredients(ingredients: IngredientsDto?): Ingredients {
         return Ingredients(
             mapMalt(ingredients?.malt),
             mapHop(ingredients?.hops),
@@ -58,25 +58,26 @@ class BeerModelDataMapper {
         )
     }
 
-    private fun mapFermentation(fermentation: Fermentation_?): Fermentation {
+    private fun mapFermentation(fermentation: FermentationDto?): Fermentation {
         return Fermentation(mapBoilVolume(fermentation?.temp))
     }
 
-    private fun mapMashTemp(mashTemp_: List<MashTemp_>?): List<MashTemp> {
+    private fun mapMashTemp(mashTempDto: List<MashTempDto>?): List<MashTemp> {
         val mashTemp = mutableListOf<MashTemp>()
-        mashTemp_?.forEach { mashTemp.add(MashTemp(mapBoilVolume(it.temp), it.duration)) }
+        mashTempDto?.forEach { mashTemp.add(MashTemp(mapBoilVolume(it.temp), it.duration)) }
         return mashTemp
     }
 
-    private fun mapMalt(malt_: List<Malt_>?): List<Malt> {
+    private fun mapMalt(maltDto: List<MaltDto>?): List<Malt> {
         val malt = mutableListOf<Malt>()
-        malt_?.forEach { malt.add(Malt(it.name, mapBoilVolume(it.amount))) }
+        maltDto?.forEach { malt.add(Malt(it.name, mapBoilVolume(it.amount))) }
         return malt
     }
 
-    private fun mapHop(hop_: List<Hop_>?): List<Hop> {
+    private fun mapHop(hopDto: List<HopDto>?): List<Hop> {
         val hop = mutableListOf<Hop>()
-        hop_?.forEach { hop.add(Hop(it.name, mapBoilVolume(it.amount), it.add, it.attribute)) }
+        hopDto?.forEach { hop.add(Hop(it.name, mapBoilVolume(it.amount), it.add, it.attribute)) }
         return hop
     }
+
 }

@@ -3,9 +3,7 @@ package com.bielfernandezb.samplebeerapp.data.repository
 import com.bielfernandezb.samplebeerapp.data.repository.local.LocalDataSource
 import com.bielfernandezb.samplebeerapp.data.repository.remote.RemoteDataSource
 import com.bielfernandezb.samplebeerapp.data.utils.performDatabaseGetOperation
-import com.bielfernandezb.samplebeerapp.data.utils.performDatabaseInsertOperation
 import com.bielfernandezb.samplebeerapp.data.utils.performGetOperation
-import com.bielfernandezb.samplebeerapp.domain.entity.Beer
 import com.bielfernandezb.samplebeerapp.domain.repository.BeerRepository
 import javax.inject.Inject
 
@@ -28,11 +26,8 @@ class BeerRepositoryImpl @Inject constructor(
         databaseQuery = { localDataSource.getBeer(id) }
     )
 
-    override fun saveBeers(beers: List<Beer>) = performDatabaseInsertOperation(
-        saveCallResult = { localDataSource.insertAll(beers) }
-    )
-
     override fun getAllBeers() = performDatabaseGetOperation(
         databaseQuery = { localDataSource.getBeers() }
     )
+
 }

@@ -26,20 +26,6 @@ fun <T, A> performGetOperation(
         }
     }
 
-fun <A> performRemoteGetOperation(
-    networkCall: suspend () -> Resource<A>
-): LiveData<Resource<A>> =
-    liveData(Dispatchers.IO) {
-        emit(Resource.loading())
-        val responseStatus = networkCall.invoke()
-        if (responseStatus.status == Resource.Status.SUCCESS) {
-            val source = responseStatus.data!!
-            emit(Resource.success(source))
-        } else if (responseStatus.status == Resource.Status.ERROR) {
-            emit(Resource.error(responseStatus.message!!))
-        }
-    }
-
 fun <T> performDatabaseGetOperation(
     databaseQuery: () -> LiveData<T>
 ): LiveData<Resource<T>> =
@@ -48,11 +34,4 @@ fun <T> performDatabaseGetOperation(
         emitSource(source)
     }
 
-@OptIn(DelicateCoroutinesApi::class)
-fun performDatabaseInsertOperation(
-    saveCallResult: suspend () -> Unit
-): Job =
-    GlobalScope.launch {
-        saveCallResult.invoke()
-    }
 

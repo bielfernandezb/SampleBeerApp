@@ -28,10 +28,6 @@ object AppModule {
     fun provideGetBeerListUseCase(repository: BeerRepositoryImpl): GetRemoteBeerListUseCase =
         GetRemoteBeerListUseCase(repository)
 
-    @Singleton
-    @Provides
-    fun provideSaveBeerListUseCase(repository: BeerRepositoryImpl): SaveBeerListUseCase =
-        SaveBeerListUseCase(repository)
 
     @Singleton
     @Provides

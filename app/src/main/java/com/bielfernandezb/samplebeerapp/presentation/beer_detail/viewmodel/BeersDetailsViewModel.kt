@@ -18,7 +18,7 @@ class BeersDetailsViewModel @Inject constructor(
     private val _id = MutableLiveData<Long>()
 
     private val _beer = _id.switchMap { id ->
-        getBeerUseCase.invoke(id)
+        getBeerUseCase(id)
     }
 
     val beer: LiveData<Resource<Beer>> = _beer
