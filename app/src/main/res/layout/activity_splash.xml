@@ -9,21 +9,15 @@
             type="Integer" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <uk.co.barbuzz.beerprogressview.BeerProgressView
+        android:id="@+id/beerProgressView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
-
-        <uk.co.barbuzz.beerprogressview.BeerProgressView
-            android:id="@+id/beerProgressView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"
-            app:beerColor="#EFA601"
-            app:beerProgress="@{progress}"
-            app:bubbleColor="#B67200"
-            app:bubbleCount="12"
-            app:waveAmplitude="3dp"
-            app:waveMax="100" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        android:visibility="visible"
+        app:beerColor="#EFA601"
+        app:beerProgress="@{progress}"
+        app:bubbleColor="#B67200"
+        app:bubbleCount="12"
+        app:waveAmplitude="3dp"
+        app:waveMax="100" />
 </layout>

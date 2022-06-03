@@ -1,12 +1,12 @@
-package com.bielfernandezb.samplebeerapp.view.activities
+package com.bielfernandezb.samplebeerapp
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.bielfernandezb.samplebeerapp.beer_list.activities.MainActivity
 import com.bielfernandezb.samplebeerapp.databinding.ActivitySplashBinding
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     lateinit var binding: ActivitySplashBinding
     var progressBeer: Int = 0

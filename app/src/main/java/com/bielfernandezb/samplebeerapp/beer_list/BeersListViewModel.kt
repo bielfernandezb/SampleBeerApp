@@ -1,4 +1,4 @@
-package com.bielfernandezb.samplebeerapp.view
+package com.bielfernandezb.samplebeerapp.beer_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,20 +11,22 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class BeersDetailsViewModel @Inject constructor(
+class BeersListViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
+    private val _page = MutableLiveData<Int>()
 
-    private val _id = MutableLiveData<Long>()
+    private var _beers = _page.switchMap { page ->
+        repository.getBeers(page, 10)
+    }
+    val beers: LiveData<Resource<List<Beer>>> = _beers
 
-    private val _beer = _id.switchMap { id ->
-        repository.getBeer(id)
+    fun start(page: Int) {
+        _page.value = page
     }
 
-    val beer: LiveData<Resource<Beer>> = _beer
-
-    fun start(id: Long) {
-        _id.value = id
+    fun searchDatabase(searchQuery: String): LiveData<Resource<List<Beer>>> {
+        return repository.searchDatabase(searchQuery)
     }
 
 }

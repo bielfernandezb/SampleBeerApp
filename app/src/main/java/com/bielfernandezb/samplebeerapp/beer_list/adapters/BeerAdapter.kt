@@ -1,4 +1,4 @@
-package com.bielfernandezb.samplebeerapp.view.adapters
+package com.bielfernandezb.samplebeerapp.beer_list.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

@@ -1,16 +1,16 @@
-package com.bielfernandezb.samplebeerapp.view.activities
+package com.bielfernandezb.samplebeerapp.beer_list.activities
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.bielfernandezb.samplebeerapp.BaseActivity
 import com.bielfernandezb.samplebeerapp.R
-import com.bielfernandezb.samplebeerapp.view.fragments.BeerListFragment
+import com.bielfernandezb.samplebeerapp.beer_list.fragments.BeerListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

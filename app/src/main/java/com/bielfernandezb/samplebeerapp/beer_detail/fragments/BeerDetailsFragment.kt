@@ -1,4 +1,4 @@
-package com.bielfernandezb.samplebeerapp.view.fragments
+package com.bielfernandezb.samplebeerapp.beer_detail.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bielfernandezb.samplebeerapp.databinding.FragmentBeerDetailBinding
 import com.bielfernandezb.samplebeerapp.utils.Resource
-import com.bielfernandezb.samplebeerapp.view.BeersDetailsViewModel
+import com.bielfernandezb.samplebeerapp.beer_detail.BeersDetailsViewModel
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 

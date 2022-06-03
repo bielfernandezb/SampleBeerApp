@@ -1,4 +1,4 @@
-package com.bielfernandezb.samplebeerapp.view.fragments
+package com.bielfernandezb.samplebeerapp.beer_list.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +12,9 @@ import com.bielfernandezb.samplebeerapp.R
 import com.bielfernandezb.samplebeerapp.databinding.FragmentBeerListBinding
 import com.bielfernandezb.samplebeerapp.model.entities.Beer
 import com.bielfernandezb.samplebeerapp.utils.Resource
-import com.bielfernandezb.samplebeerapp.view.BeersListViewModel
-import com.bielfernandezb.samplebeerapp.view.activities.BeerDetailsActivity
-import com.bielfernandezb.samplebeerapp.view.adapters.BeerAdapter
+import com.bielfernandezb.samplebeerapp.beer_list.BeersListViewModel
+import com.bielfernandezb.samplebeerapp.beer_detail.activities.BeerDetailsActivity
+import com.bielfernandezb.samplebeerapp.beer_list.adapters.BeerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 
