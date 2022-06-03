@@ -3,7 +3,7 @@ package com.bielfernandezb.samplebeerapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.bielfernandezb.samplebeerapp.beer_list.activities.MainActivity
+import com.bielfernandezb.samplebeerapp.beer_list.views.activities.MainActivity
 import com.bielfernandezb.samplebeerapp.databinding.ActivitySplashBinding
 
 class SplashActivity : BaseActivity() {

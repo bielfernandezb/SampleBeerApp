@@ -1,11 +1,11 @@
-package com.bielfernandezb.samplebeerapp.beer_list.activities
+package com.bielfernandezb.samplebeerapp.beer_list.views.activities
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.bielfernandezb.samplebeerapp.BaseActivity
 import com.bielfernandezb.samplebeerapp.R
-import com.bielfernandezb.samplebeerapp.beer_list.fragments.BeerListFragment
+import com.bielfernandezb.samplebeerapp.beer_list.views.fragments.BeerListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 

@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
-        <activity android:name=".beer_list.activities.MainActivity" />
-        <activity android:name=".beer_detail.activities.BeerDetailsActivity" />
+        <activity android:name="com.bielfernandezb.samplebeerapp.beer_list.views.activities.MainActivity" />
+        <activity android:name=".beer_detail.views.activities.BeerDetailsActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
