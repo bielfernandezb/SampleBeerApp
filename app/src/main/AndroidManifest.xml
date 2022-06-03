@@ -12,7 +12,8 @@
         android:theme="@style/Theme.SampleBeerApp">
         <activity
             android:name=".view.activities.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

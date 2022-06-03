@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bielfernandezb.samplebeerapp.R
 import com.bielfernandezb.samplebeerapp.databinding.FragmentBeerListBinding
@@ -35,7 +34,7 @@ class BeerListFragment : Fragment(), BeerAdapter.BeerItemListener, SearchView.On
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBeerListBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
@@ -64,15 +63,16 @@ class BeerListFragment : Fragment(), BeerAdapter.BeerItemListener, SearchView.On
 
     private fun setupObservers() {
         viewModel.start(currentPage)
-        viewModel.beers.observe(viewLifecycleOwner, Observer {
+        viewModel.beers.observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     if (!it.data.isNullOrEmpty()) adapter.setItems(ArrayList(it.data))
                 }
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                else -> {}
             }
-        })
+        }
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.start(++currentPage)
             binding.swipeRefresh.isRefreshing = false
@@ -99,12 +99,11 @@ class BeerListFragment : Fragment(), BeerAdapter.BeerItemListener, SearchView.On
     }
 
     private fun searchDatabase(query: String) {
-        val searchQuery = query
 
-        viewModel.searchDatabase(searchQuery).observe(this, { list ->
+        viewModel.searchDatabase(query).observe(this) { list ->
             list.let {
                 adapter.setItems(it.data as ArrayList<Beer>)
             }
-        })
+        }
     }
 }

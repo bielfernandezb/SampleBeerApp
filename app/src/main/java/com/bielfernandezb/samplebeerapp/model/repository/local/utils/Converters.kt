@@ -1,7 +1,6 @@
 package com.bielfernandezb.samplebeerapp.model.repository.local.utils
 
 import androidx.room.TypeConverter
-import com.bielfernandezb.samplebeerapp.model.entities.BoilVolume
 import com.bielfernandezb.samplebeerapp.model.entities.Hop
 import com.bielfernandezb.samplebeerapp.model.entities.Malt
 import com.bielfernandezb.samplebeerapp.model.entities.MashTemp
@@ -9,20 +8,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class Converters {
-
-    @TypeConverter
-    fun fromBoilVolume(value: List<BoilVolume>): String {
-        val gson = Gson()
-        val type = object : TypeToken<List<BoilVolume>>() {}.type
-        return gson.toJson(value, type)
-    }
-
-    @TypeConverter
-    fun toBoilVolume(value: String): List<BoilVolume> {
-        val gson = Gson()
-        val type = object : TypeToken<List<BoilVolume>>() {}.type
-        return gson.fromJson(value, type)
-    }
 
     @TypeConverter
     fun fromStringList(value: List<String>): String {

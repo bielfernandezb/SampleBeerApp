@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         scheduleSplashScreen(this)
     }
 
-    fun scheduleSplashScreen(context: Context) {
+    private fun scheduleSplashScreen(context: Context) {
         val thread: Thread = object : Thread() {
             override fun run() {
                 try {

@@ -16,7 +16,7 @@ class BeerDetailsActivity : AppCompatActivity() {
 
         val b = intent.extras
         if (b != null) {
-            val value = b.getLong("beerId");
+            val value = b.getLong("beerId")
             val fragmentManager: FragmentManager = supportFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             val beerListFragment = BeerDetailsFragment()

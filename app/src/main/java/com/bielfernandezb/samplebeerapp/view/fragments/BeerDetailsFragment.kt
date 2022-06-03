@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.bielfernandezb.samplebeerapp.databinding.FragmentBeerDetailBinding
 import com.bielfernandezb.samplebeerapp.utils.Resource
 import com.bielfernandezb.samplebeerapp.view.BeersDetailsViewModel
@@ -23,7 +22,7 @@ class BeerDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBeerDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,7 +34,7 @@ class BeerDetailsFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.beer.observe(viewLifecycleOwner, Observer {
+        viewModel.beer.observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     if (it.data != null) {
@@ -50,7 +49,8 @@ class BeerDetailsFragment : Fragment() {
                 }
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                else -> {}
             }
-        })
+        }
     }
 }
